@@ -1,0 +1,37 @@
+#include <Arduino.h>
+
+const int buttonPin = 2; 
+const int relayPin = 4;
+const int ledPin = 2;    
+
+bool relayState = false; 
+bool lastButtonState = HIGH;
+
+void setup() {
+  
+  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(relayPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+
+  
+  digitalWrite(relayPin, LOW);
+  digitalWrite(ledPin, HIGH); // Włącz diodę LED, gdy przekaźnik jest wyłączony
+}
+
+void loop() {
+  
+  bool buttonState = digitalRead(buttonPin);
+
+  
+  if (buttonState == LOW && lastButtonState == HIGH) {
+    
+    relayState = !relayState;
+    digitalWrite(relayPin, relayState ? HIGH : LOW);
+    digitalWrite(ledPin, relayState ? LOW : HIGH); // Zmień stan diody LED
+
+    
+    delay(50);
+  }
+
+  lastButtonState = buttonState;
+}
