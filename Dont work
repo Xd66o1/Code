@@ -1,13 +1,12 @@
 #include <Arduino.h>
 
 
-const int buttonPin = 2; // Pin przycisku (D2)
-const int relayPin = 4;  // Pin przekaźnika (D4)
-const int ledPin = 2;    // Pin diody LED (D5) - zmieniono na inny pin, aby uniknąć konfliktu z buttonPin
+const int buttonPin = 2; 
+const int relayPin = 4;  
+const int ledPin = 2;    
 
-
-bool relayState = false;  // Początkowy stan przekaźnika (wyłączony)
-bool lastButtonState = HIGH; // Ostatni stan przycisku
+bool relayState = false;  
+bool lastButtonState = HIGH; 
 
 void setup() {
   
@@ -17,7 +16,7 @@ void setup() {
 
   
   digitalWrite(relayPin, LOW);
-  digitalWrite(ledPin, HIGH); // Włącz diodę LED, gdy przekaźnik jest wyłączony
+  digitalWrite(ledPin, HIGH);
 }
 
 void loop() {
